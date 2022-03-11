@@ -76,21 +76,19 @@
                 Event loop does one simple job. It monitors the call stack and callback queue. Event loop maintains
                 the
                 communication with the call stack and call back queue. It checks whether the call stack is empty or not.
-                When
-                call stack is empty it takes the first event from the queue and pushes it to the call stack. Call back
-                queue
-                and call stack may be empty for some some time but event loop will never stop checking.
+                When the call stack is empty, it takes the first event from the queue and pushes it to the call stack.
+                The call back queue and call stack may be empty for some time, but the event loop will never stop
+                checking.
             </p>
             <h3>What are the differences between local and session storage?</h3>
-            <P>There are not many differences exist between local and session storage. They almost do the same thing.
-                The
-                one difference they have is data storage duration. Local storage data won't expire once it is used in
+            <P>The difference between local and session storage is minimal. They are almost identical.
+                The major difference between them is the duration of data storage. Local storage data won't expire once
+                it is used in
                 the
-                browser. But session storage data expires or clears when that particular session ends. The data is
+                browser. But session storage data is cleared when that particular session ends. The data is
                 stored
-                for the duration of the session. The storage capacity of local storage is 5MB/10MB, while for the
-                session is
-                5MB. Local storage data can be removed via javascript or manually.</P>
+                for the duration of the session. Local storage data can be removed manually or using javascript. Local
+                storage has a capacity of 5MB/10MB, whereas session storage has a capacity of 5MB.</P>
         </div>
     </section>
     <footer></footer>
