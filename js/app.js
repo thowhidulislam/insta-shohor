@@ -1,5 +1,3 @@
-document.getElementById('questions').style.display = 'block';
-
 let posts = [];
 
 const likedPostsId = [];
