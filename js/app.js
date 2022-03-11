@@ -1,3 +1,5 @@
+document.getElementById('questions').style.display = 'block';
+
 let posts = [];
 
 const likedPostsId = [];
@@ -14,11 +16,11 @@ const getReportedPosts = () => {
 const isLiked = (id) => {
   return likedPostsId?.length && !!likedPostsId.includes(id);
 };
-document.getElementById('questions').style.display = 'block';
 
 const addToLiked = (id) => {
   likedPostsId.push(id);
-  showPosts(posts);
+  const remainingPosts = posts.filter((post) => !reportedPostsId.includes(post.id));
+  showPosts(remainingPosts);
 
 };
 
@@ -26,7 +28,6 @@ const reportPost = (id) => {
   reportedPostsId.push(id);
   const remainingPosts = posts.filter((post) => !reportedPostsId.includes(post.id));
   showPosts(remainingPosts);
-
 };
 
 const displayContent = (text) => {
@@ -153,7 +154,6 @@ const displayLikedPosts = () => {
   document.getElementById('liked').textContent = '';
   const likedPosts = getLikedPosts();
   likedPosts.forEach((post) => {
-    document.getElementById('questions').style.display = 'none';
     const div = createPost(post);
     document.getElementById("liked").appendChild(div);
   });
@@ -174,7 +174,6 @@ const loadPosts = async () => {
   posts = await data.json();
   showPosts(posts);
   document.getElementById('questions').style.display = 'block';
-
 }
 
 loadPosts();
