@@ -14,16 +14,19 @@ const getReportedPosts = () => {
 const isLiked = (id) => {
   return likedPostsId?.length && !!likedPostsId.includes(id);
 };
+document.getElementById('questions').style.display = 'block';
 
 const addToLiked = (id) => {
   likedPostsId.push(id);
   showPosts(posts);
+
 };
 
 const reportPost = (id) => {
   reportedPostsId.push(id);
   const remainingPosts = posts.filter((post) => !reportedPostsId.includes(post.id));
   showPosts(remainingPosts);
+
 };
 
 const displayContent = (text) => {
@@ -32,9 +35,11 @@ const displayContent = (text) => {
 
 const switchTab = (id) => {
   if (id === "posts") {
+    document.getElementById('questions').style.display = 'block';
     document.getElementById("posts").style.display = "grid";
     document.getElementById("liked").style.display = "none";
     document.getElementById("reported").style.display = "none";
+
   } else if (id === "liked") {
     document.getElementById("liked").style.display = "block";
     document.getElementById("posts").style.display = "none";
@@ -140,18 +145,22 @@ const showPosts = (posts) => {
     const div = createPost(post);
     productsContainer.appendChild(div);
   });
+
 };
 
 const displayLikedPosts = () => {
+  document.getElementById('questions').style.display = 'none';
   document.getElementById('liked').textContent = '';
   const likedPosts = getLikedPosts();
   likedPosts.forEach((post) => {
+    document.getElementById('questions').style.display = 'none';
     const div = createPost(post);
     document.getElementById("liked").appendChild(div);
   });
 };
 
 const displayReportedPosts = () => {
+  document.getElementById('questions').style.display = 'none';
   document.getElementById('reported').textContent = '';
   const reportedPosts = getReportedPosts();
   reportedPosts.forEach((post) => {
@@ -164,6 +173,8 @@ const loadPosts = async () => {
   let data = await fetch('../data/posts.json');
   posts = await data.json();
   showPosts(posts);
+  document.getElementById('questions').style.display = 'block';
+
 }
 
 loadPosts();
